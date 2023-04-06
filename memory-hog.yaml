@@ -6,7 +6,7 @@ spec:
   containers:
   - name: memory-hog
     image: debian:stretch-slim
-    command: [ "bash", "-c", "arr=(); while true; do arr+=($(head -c 1048576 /dev/urandom)); done" ]
+    command: [ "bash", "-c", "arr=(); while true; do arr+=($(head -c 1048576 -n 1 /dev/urandom | xxd -p)); done" ]
     resources:
       limits:
         memory: "100Mi"
